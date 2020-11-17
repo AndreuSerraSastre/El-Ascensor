@@ -29,6 +29,7 @@ namespace El_Ascensor
         public ElAscensor()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             PisoActual.Text = PisoActualD.ToString(); //Imprimimos por pantalla el piso actual
 
             // Introducimos la informacion de las Ys en cada piso
@@ -290,6 +291,11 @@ namespace El_Ascensor
         {
             paradas.Add(new Peticion(1, true, false));
             ActualizarPisosAVisitar();
+        }
+
+        private void ElAscensor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

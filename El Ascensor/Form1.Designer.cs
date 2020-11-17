@@ -77,9 +77,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(142)))));
             this.panel1.Controls.Add(this.AscensorImagen);
-            this.panel1.Location = new System.Drawing.Point(326, 12);
+            this.panel1.Location = new System.Drawing.Point(217, 8);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(428, 1114);
+            this.panel1.Size = new System.Drawing.Size(285, 724);
             this.panel1.TabIndex = 0;
             // 
             // AscensorImagen
@@ -87,17 +88,17 @@
             this.AscensorImagen.BackColor = System.Drawing.Color.Transparent;
             this.AscensorImagen.BackgroundImage = global::El_Ascensor.Properties.Resources.AC2;
             this.AscensorImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AscensorImagen.Location = new System.Drawing.Point(4, 917);
+            this.AscensorImagen.Location = new System.Drawing.Point(3, 596);
+            this.AscensorImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AscensorImagen.Name = "AscensorImagen";
-            this.AscensorImagen.Size = new System.Drawing.Size(420, 174);
+            this.AscensorImagen.Size = new System.Drawing.Size(280, 113);
             this.AscensorImagen.TabIndex = 4;
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(-118, 46);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(-79, 30);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(150, 35);
+            this.label7.Size = new System.Drawing.Size(100, 23);
             this.label7.TabIndex = 6;
             // 
             // panel2
@@ -110,9 +111,10 @@
             this.panel2.Controls.Add(this.Boton3);
             this.panel2.Controls.Add(this.Boton2);
             this.panel2.Controls.Add(this.Boton1);
-            this.panel2.Location = new System.Drawing.Point(1299, 55);
+            this.panel2.Location = new System.Drawing.Point(866, 36);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(278, 460);
+            this.panel2.Size = new System.Drawing.Size(185, 299);
             this.panel2.TabIndex = 1;
             // 
             // Boton5
@@ -122,9 +124,10 @@
             this.Boton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Boton5.Font = new System.Drawing.Font("Roboto", 9F);
             this.Boton5.ForeColor = System.Drawing.Color.Black;
-            this.Boton5.Location = new System.Drawing.Point(46, 128);
+            this.Boton5.Location = new System.Drawing.Point(31, 83);
+            this.Boton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Boton5.Name = "Boton5";
-            this.Boton5.Size = new System.Drawing.Size(80, 78);
+            this.Boton5.Size = new System.Drawing.Size(53, 51);
             this.Boton5.TabIndex = 7;
             this.Boton5.Text = "5";
             this.Boton5.UseVisualStyleBackColor = false;
@@ -134,9 +137,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(21, 35);
+            this.label1.Location = new System.Drawing.Point(14, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 47);
+            this.label1.Size = new System.Drawing.Size(152, 31);
             this.label1.TabIndex = 6;
             this.label1.Text = "El Ascensor";
             // 
@@ -148,9 +152,10 @@
             this.Boton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Boton6.Font = new System.Drawing.Font("Roboto", 9F);
             this.Boton6.ForeColor = System.Drawing.Color.Black;
-            this.Boton6.Location = new System.Drawing.Point(170, 128);
+            this.Boton6.Location = new System.Drawing.Point(113, 83);
+            this.Boton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Boton6.Name = "Boton6";
-            this.Boton6.Size = new System.Drawing.Size(80, 78);
+            this.Boton6.Size = new System.Drawing.Size(53, 51);
             this.Boton6.TabIndex = 5;
             this.Boton6.Text = "6";
             this.Boton6.UseVisualStyleBackColor = false;
@@ -163,9 +168,10 @@
             this.Boton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Boton4.Font = new System.Drawing.Font("Roboto", 9F);
             this.Boton4.ForeColor = System.Drawing.Color.Black;
-            this.Boton4.Location = new System.Drawing.Point(170, 231);
+            this.Boton4.Location = new System.Drawing.Point(113, 150);
+            this.Boton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Boton4.Name = "Boton4";
-            this.Boton4.Size = new System.Drawing.Size(80, 78);
+            this.Boton4.Size = new System.Drawing.Size(53, 51);
             this.Boton4.TabIndex = 3;
             this.Boton4.Text = "4";
             this.Boton4.UseVisualStyleBackColor = false;
@@ -178,9 +184,10 @@
             this.Boton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Boton3.Font = new System.Drawing.Font("Roboto", 9F);
             this.Boton3.ForeColor = System.Drawing.Color.Black;
-            this.Boton3.Location = new System.Drawing.Point(46, 231);
+            this.Boton3.Location = new System.Drawing.Point(31, 150);
+            this.Boton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Boton3.Name = "Boton3";
-            this.Boton3.Size = new System.Drawing.Size(80, 78);
+            this.Boton3.Size = new System.Drawing.Size(53, 51);
             this.Boton3.TabIndex = 2;
             this.Boton3.Text = "3";
             this.Boton3.UseVisualStyleBackColor = false;
@@ -193,9 +200,10 @@
             this.Boton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Boton2.Font = new System.Drawing.Font("Roboto", 9F);
             this.Boton2.ForeColor = System.Drawing.Color.Black;
-            this.Boton2.Location = new System.Drawing.Point(170, 340);
+            this.Boton2.Location = new System.Drawing.Point(113, 221);
+            this.Boton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Boton2.Name = "Boton2";
-            this.Boton2.Size = new System.Drawing.Size(80, 78);
+            this.Boton2.Size = new System.Drawing.Size(53, 51);
             this.Boton2.TabIndex = 1;
             this.Boton2.Text = "2";
             this.Boton2.UseVisualStyleBackColor = false;
@@ -208,9 +216,10 @@
             this.Boton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Boton1.Font = new System.Drawing.Font("Roboto", 9F);
             this.Boton1.ForeColor = System.Drawing.Color.Black;
-            this.Boton1.Location = new System.Drawing.Point(46, 340);
+            this.Boton1.Location = new System.Drawing.Point(31, 221);
+            this.Boton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Boton1.Name = "Boton1";
-            this.Boton1.Size = new System.Drawing.Size(80, 78);
+            this.Boton1.Size = new System.Drawing.Size(53, 51);
             this.Boton1.TabIndex = 0;
             this.Boton1.Text = "1";
             this.Boton1.UseVisualStyleBackColor = false;
@@ -219,9 +228,10 @@
             // progressBar
             // 
             this.progressBar.BackColor = System.Drawing.Color.Salmon;
-            this.progressBar.Location = new System.Drawing.Point(861, 1078);
+            this.progressBar.Location = new System.Drawing.Point(574, 701);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(777, 48);
+            this.progressBar.Size = new System.Drawing.Size(518, 31);
             this.progressBar.TabIndex = 2;
             this.progressBar.UseWaitCursor = true;
             // 
@@ -235,9 +245,10 @@
             this.panel3.Controls.Add(this.PisoActual);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(861, 652);
+            this.panel3.Location = new System.Drawing.Point(574, 424);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(776, 319);
+            this.panel3.Size = new System.Drawing.Size(518, 208);
             this.panel3.TabIndex = 3;
             // 
             // PisosAVisitar
@@ -245,9 +256,10 @@
             this.PisosAVisitar.AutoSize = true;
             this.PisosAVisitar.Font = new System.Drawing.Font("Roboto", 14F);
             this.PisosAVisitar.ForeColor = System.Drawing.Color.White;
-            this.PisosAVisitar.Location = new System.Drawing.Point(304, 235);
+            this.PisosAVisitar.Location = new System.Drawing.Point(203, 153);
+            this.PisosAVisitar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PisosAVisitar.Name = "PisosAVisitar";
-            this.PisosAVisitar.Size = new System.Drawing.Size(40, 34);
+            this.PisosAVisitar.Size = new System.Drawing.Size(27, 23);
             this.PisosAVisitar.TabIndex = 5;
             this.PisosAVisitar.Text = "{ }";
             // 
@@ -256,9 +268,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Roboto", 14F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(46, 235);
+            this.label4.Location = new System.Drawing.Point(31, 153);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(195, 34);
+            this.label4.Size = new System.Drawing.Size(134, 23);
             this.label4.TabIndex = 4;
             this.label4.Text = "Pisos a visitar:";
             // 
@@ -267,9 +280,10 @@
             this.PisoObjetivo.AutoSize = true;
             this.PisoObjetivo.Font = new System.Drawing.Font("Roboto", 14F);
             this.PisoObjetivo.ForeColor = System.Drawing.Color.White;
-            this.PisoObjetivo.Location = new System.Drawing.Point(304, 148);
+            this.PisoObjetivo.Location = new System.Drawing.Point(203, 96);
+            this.PisoObjetivo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PisoObjetivo.Name = "PisoObjetivo";
-            this.PisoObjetivo.Size = new System.Drawing.Size(31, 34);
+            this.PisoObjetivo.Size = new System.Drawing.Size(21, 23);
             this.PisoObjetivo.TabIndex = 3;
             this.PisoObjetivo.Text = "0";
             // 
@@ -278,9 +292,10 @@
             this.PisoActual.AutoSize = true;
             this.PisoActual.Font = new System.Drawing.Font("Roboto", 14F);
             this.PisoActual.ForeColor = System.Drawing.Color.White;
-            this.PisoActual.Location = new System.Drawing.Point(304, 45);
+            this.PisoActual.Location = new System.Drawing.Point(203, 29);
+            this.PisoActual.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PisoActual.Name = "PisoActual";
-            this.PisoActual.Size = new System.Drawing.Size(31, 34);
+            this.PisoActual.Size = new System.Drawing.Size(21, 23);
             this.PisoActual.TabIndex = 2;
             this.PisoActual.Text = "0";
             // 
@@ -289,9 +304,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto", 14F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(46, 148);
+            this.label3.Location = new System.Drawing.Point(31, 96);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 34);
+            this.label3.Size = new System.Drawing.Size(126, 23);
             this.label3.TabIndex = 1;
             this.label3.Text = "Piso objetivo:";
             // 
@@ -300,9 +316,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto", 14F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(46, 45);
+            this.label2.Location = new System.Drawing.Point(31, 29);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 34);
+            this.label2.Size = new System.Drawing.Size(109, 23);
             this.label2.TabIndex = 0;
             this.label2.Text = "Piso actual:";
             // 
@@ -310,9 +327,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label5.Location = new System.Drawing.Point(928, 103);
+            this.label5.Location = new System.Drawing.Point(619, 67);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 34);
+            this.label5.Size = new System.Drawing.Size(52, 23);
             this.label5.TabIndex = 4;
             this.label5.Text = "Sube";
             // 
@@ -320,9 +338,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label6.Location = new System.Drawing.Point(1059, 102);
+            this.label6.Location = new System.Drawing.Point(706, 66);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 34);
+            this.label6.Size = new System.Drawing.Size(47, 23);
             this.label6.TabIndex = 5;
             this.label6.Text = "Baja";
             // 
@@ -330,18 +349,20 @@
             // 
             this.Sube.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Sube.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Sube.Location = new System.Drawing.Point(928, 155);
+            this.Sube.Location = new System.Drawing.Point(619, 101);
+            this.Sube.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Sube.Name = "Sube";
-            this.Sube.Size = new System.Drawing.Size(79, 79);
+            this.Sube.Size = new System.Drawing.Size(54, 53);
             this.Sube.TabIndex = 6;
             // 
             // Baja
             // 
             this.Baja.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Baja.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Baja.Location = new System.Drawing.Point(1054, 155);
+            this.Baja.Location = new System.Drawing.Point(703, 101);
+            this.Baja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Baja.Name = "Baja";
-            this.Baja.Size = new System.Drawing.Size(79, 79);
+            this.Baja.Size = new System.Drawing.Size(54, 53);
             this.Baja.TabIndex = 7;
             // 
             // down5
@@ -353,9 +374,10 @@
             this.down5.FlatAppearance.BorderSize = 0;
             this.down5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.down5.Font = new System.Drawing.Font("Roboto", 8F);
-            this.down5.Location = new System.Drawing.Point(204, 250);
+            this.down5.Location = new System.Drawing.Point(136, 162);
+            this.down5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.down5.Name = "down5";
-            this.down5.Size = new System.Drawing.Size(45, 45);
+            this.down5.Size = new System.Drawing.Size(30, 29);
             this.down5.TabIndex = 17;
             this.down5.UseVisualStyleBackColor = false;
             this.down5.Click += new System.EventHandler(this.down5_Click);
@@ -369,9 +391,10 @@
             this.up5.FlatAppearance.BorderSize = 0;
             this.up5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.up5.Font = new System.Drawing.Font("Roboto", 8F);
-            this.up5.Location = new System.Drawing.Point(74, 250);
+            this.up5.Location = new System.Drawing.Point(49, 162);
+            this.up5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.up5.Name = "up5";
-            this.up5.Size = new System.Drawing.Size(45, 45);
+            this.up5.Size = new System.Drawing.Size(30, 29);
             this.up5.TabIndex = 16;
             this.up5.UseVisualStyleBackColor = false;
             this.up5.Click += new System.EventHandler(this.up5_Click);
@@ -385,9 +408,10 @@
             this.down4.FlatAppearance.BorderSize = 0;
             this.down4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.down4.Font = new System.Drawing.Font("Roboto", 8F);
-            this.down4.Location = new System.Drawing.Point(204, 428);
+            this.down4.Location = new System.Drawing.Point(136, 278);
+            this.down4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.down4.Name = "down4";
-            this.down4.Size = new System.Drawing.Size(45, 45);
+            this.down4.Size = new System.Drawing.Size(30, 29);
             this.down4.TabIndex = 15;
             this.down4.UseVisualStyleBackColor = false;
             this.down4.Click += new System.EventHandler(this.down4_Click);
@@ -401,9 +425,10 @@
             this.up4.FlatAppearance.BorderSize = 0;
             this.up4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.up4.Font = new System.Drawing.Font("Roboto", 8F);
-            this.up4.Location = new System.Drawing.Point(74, 428);
+            this.up4.Location = new System.Drawing.Point(49, 278);
+            this.up4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.up4.Name = "up4";
-            this.up4.Size = new System.Drawing.Size(45, 45);
+            this.up4.Size = new System.Drawing.Size(30, 29);
             this.up4.TabIndex = 14;
             this.up4.UseVisualStyleBackColor = false;
             this.up4.Click += new System.EventHandler(this.up4_Click);
@@ -417,9 +442,10 @@
             this.down3.FlatAppearance.BorderSize = 0;
             this.down3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.down3.Font = new System.Drawing.Font("Roboto", 8F);
-            this.down3.Location = new System.Drawing.Point(204, 605);
+            this.down3.Location = new System.Drawing.Point(136, 393);
+            this.down3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.down3.Name = "down3";
-            this.down3.Size = new System.Drawing.Size(45, 45);
+            this.down3.Size = new System.Drawing.Size(30, 29);
             this.down3.TabIndex = 13;
             this.down3.UseVisualStyleBackColor = false;
             this.down3.Click += new System.EventHandler(this.down3_Click);
@@ -433,9 +459,10 @@
             this.up3.FlatAppearance.BorderSize = 0;
             this.up3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.up3.Font = new System.Drawing.Font("Roboto", 8F);
-            this.up3.Location = new System.Drawing.Point(74, 605);
+            this.up3.Location = new System.Drawing.Point(49, 393);
+            this.up3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.up3.Name = "up3";
-            this.up3.Size = new System.Drawing.Size(45, 45);
+            this.up3.Size = new System.Drawing.Size(30, 29);
             this.up3.TabIndex = 12;
             this.up3.UseVisualStyleBackColor = false;
             this.up3.Click += new System.EventHandler(this.up3_Click);
@@ -449,9 +476,10 @@
             this.down2.FlatAppearance.BorderSize = 0;
             this.down2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.down2.Font = new System.Drawing.Font("Roboto", 8F);
-            this.down2.Location = new System.Drawing.Point(204, 799);
+            this.down2.Location = new System.Drawing.Point(136, 519);
+            this.down2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.down2.Name = "down2";
-            this.down2.Size = new System.Drawing.Size(45, 45);
+            this.down2.Size = new System.Drawing.Size(30, 29);
             this.down2.TabIndex = 11;
             this.down2.UseVisualStyleBackColor = false;
             this.down2.Click += new System.EventHandler(this.down2_Click);
@@ -465,9 +493,10 @@
             this.up2.FlatAppearance.BorderSize = 0;
             this.up2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.up2.Font = new System.Drawing.Font("Roboto", 8F);
-            this.up2.Location = new System.Drawing.Point(74, 799);
+            this.up2.Location = new System.Drawing.Point(49, 519);
+            this.up2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.up2.Name = "up2";
-            this.up2.Size = new System.Drawing.Size(45, 45);
+            this.up2.Size = new System.Drawing.Size(30, 29);
             this.up2.TabIndex = 10;
             this.up2.UseVisualStyleBackColor = false;
             this.up2.Click += new System.EventHandler(this.up2_Click);
@@ -481,9 +510,10 @@
             this.up1.FlatAppearance.BorderSize = 0;
             this.up1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.up1.Font = new System.Drawing.Font("Roboto", 8F);
-            this.up1.Location = new System.Drawing.Point(74, 971);
+            this.up1.Location = new System.Drawing.Point(49, 631);
+            this.up1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.up1.Name = "up1";
-            this.up1.Size = new System.Drawing.Size(45, 45);
+            this.up1.Size = new System.Drawing.Size(30, 29);
             this.up1.TabIndex = 8;
             this.up1.UseVisualStyleBackColor = false;
             this.up1.Click += new System.EventHandler(this.up1_Click);
@@ -498,9 +528,10 @@
             this.down6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.down6.Font = new System.Drawing.Font("Roboto", 8F);
             this.down6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.down6.Location = new System.Drawing.Point(204, 59);
+            this.down6.Location = new System.Drawing.Point(136, 38);
+            this.down6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.down6.Name = "down6";
-            this.down6.Size = new System.Drawing.Size(45, 45);
+            this.down6.Size = new System.Drawing.Size(30, 29);
             this.down6.TabIndex = 25;
             this.down6.UseVisualStyleBackColor = false;
             // 
@@ -508,9 +539,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label8.Location = new System.Drawing.Point(276, 972);
+            this.label8.Location = new System.Drawing.Point(184, 632);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 34);
+            this.label8.Size = new System.Drawing.Size(30, 23);
             this.label8.TabIndex = 26;
             this.label8.Text = "1º";
             // 
@@ -518,9 +550,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label9.Location = new System.Drawing.Point(276, 801);
+            this.label9.Location = new System.Drawing.Point(184, 521);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 34);
+            this.label9.Size = new System.Drawing.Size(30, 23);
             this.label9.TabIndex = 27;
             this.label9.Text = "2º";
             // 
@@ -528,9 +561,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label10.Location = new System.Drawing.Point(276, 606);
+            this.label10.Location = new System.Drawing.Point(184, 394);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 34);
+            this.label10.Size = new System.Drawing.Size(30, 23);
             this.label10.TabIndex = 28;
             this.label10.Text = "3º";
             // 
@@ -538,10 +572,11 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label11.Location = new System.Drawing.Point(276, 429);
+            this.label11.Location = new System.Drawing.Point(184, 279);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label11.Size = new System.Drawing.Size(44, 34);
+            this.label11.Size = new System.Drawing.Size(30, 23);
             this.label11.TabIndex = 29;
             this.label11.Text = "4º";
             // 
@@ -549,9 +584,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label12.Location = new System.Drawing.Point(276, 251);
+            this.label12.Location = new System.Drawing.Point(184, 163);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 34);
+            this.label12.Size = new System.Drawing.Size(30, 23);
             this.label12.TabIndex = 30;
             this.label12.Text = "5º";
             // 
@@ -559,17 +595,18 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Roboto", 14F);
-            this.label13.Location = new System.Drawing.Point(276, 60);
+            this.label13.Location = new System.Drawing.Point(184, 39);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 34);
+            this.label13.Size = new System.Drawing.Size(30, 23);
             this.label13.TabIndex = 31;
             this.label13.Text = "6º";
             // 
             // ElAscensor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1677, 1138);
+            this.ClientSize = new System.Drawing.Size(1118, 737);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -597,11 +634,11 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1699, 1194);
-            this.MinimumSize = new System.Drawing.Size(1699, 1194);
             this.Name = "ElAscensor";
             this.Text = "El Ascensor";
+            this.Load += new System.EventHandler(this.ElAscensor_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
