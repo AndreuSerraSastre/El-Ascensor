@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -9,6 +10,8 @@ namespace El_Ascensor
 {
     public partial class ElAscensor : Form
     {
+        //Simulacion en curso
+        bool Simulacion = false;
 
         //BASE DE CONOCIMIENTOS
         private int PisoActualD = 1; //Dato del piso actual
@@ -20,7 +23,7 @@ namespace El_Ascensor
          * 5↑: En el piso 5, alguien ha pulsado el boton de subir
          */
 
-        private bool Sube_baja = false; //Indica si el ascensor sube (true) o baja (false)
+        private bool Sube_baja = true; //Indica si el ascensor sube (true) o baja (false)
         private bool EnMarcha = false; //Indica si el ascensor se esta moviendo (true, en este caso evaluar sube_baja) o no (false, no evaluar sube_baja)
         //FIN BASE DE CONOCIMINETOS
 
@@ -64,60 +67,125 @@ namespace El_Ascensor
             //El ascensor siempre esta esperando peticiones (siempre esta encendido)
             while (true)
             {
-                //Si hay paradas se pone en marcha
-                while (paradas.Count != 0)
+                while (Simulacion)
                 {
-                   
-                    EnMarcha = true;
-
-                    //Selecciona el psio en base a la base de conocimientos
-                    Peticion peticion = SeleccionarPiso();
-
-                    //Mira hasta donde tiene que moverse
-                    int objetivoY = (int)paradasY[peticion.Piso];
-
-                    //Indicacion de cuanto falta para llegar al piso
-                    ProgressBar(objetivoY);
-
-                    //Si se ha pulsado el piso actual no hacer nada
-                    if (AscensorImagen.Location.Y != objetivoY)
+                    //Si hay paradas se pone en marcha
+                    while (paradas.Count != 0)
                     {
-                        //ir subiendo o bajando hasta la Y
-                        while (AscensorImagen.Location.Y != objetivoY)
+
+                        EnMarcha = true;
+
+                        //Selecciona el psio en base a la base de conocimientos
+                        Peticion peticion = SeleccionarPiso();
+
+                        //Mira hasta donde tiene que moverse
+                        int objetivoY = (int)paradasY[peticion.Piso];
+
+                        //Indicacion de cuanto falta para llegar al piso
+                        ProgressBar(objetivoY);
+
+                        //Si se ha pulsado el piso actual no hacer nada
+                        if (AscensorImagen.Location.Y != objetivoY)
                         {
-                            if (AscensorImagen.Location.Y < objetivoY)
+                            //ir subiendo o bajando hasta la Y
+                            while (AscensorImagen.Location.Y != objetivoY)
                             {
-                                //Indicamos si sube o baja y actualizamos las luces de subir o bajar
-                                Sube_baja = false;
-                                ActualizarSube_Baja();
-                                AscensorImagen.Location = new Point(AscensorImagen.Location.X, AscensorImagen.Location.Y + 1);
+                                if (AscensorImagen.Location.Y < objetivoY)
+                                {
+                                    //Indicamos si sube o baja y actualizamos las luces de subir o bajar
+                                    Sube_baja = false;
+                                    ActualizarSube_Baja();
+                                    AscensorImagen.Location = new Point(AscensorImagen.Location.X, AscensorImagen.Location.Y + 1);
+                                }
+                                else
+                                {
+                                    Sube_baja = true;
+                                    ActualizarSube_Baja();
+                                    AscensorImagen.Location = new Point(AscensorImagen.Location.X, AscensorImagen.Location.Y - 1);
+                                }
+                                progressBar.PerformStep();
+                                //Esperar un tiempo x para que no suba muy rapido
+                                System.Threading.Thread.Sleep(10);
                             }
-                            else
-                            {
-                                Sube_baja = true;
-                                ActualizarSube_Baja();
-                                AscensorImagen.Location = new Point(AscensorImagen.Location.X, AscensorImagen.Location.Y - 1);
-                            }
-                            progressBar.PerformStep();
-                            //Esperar un tiempo x para que no suba muy rapido
-                            System.Threading.Thread.Sleep(10);
+                            ActualizarSube_Baja();
                         }
-                        ActualizarSube_Baja();
+                        //Llega al piso y actualiza los pisos pendientes y se abre y cierra la puerta
+                        LlegadaAPiso(peticion);
+                        ActualizarPisosAVisitar();
                     }
-                    //Llega al piso y actualiza los pisos pendientes y se abre y cierra la puerta
-                    LlegadaAPiso(peticion);
-                    ActualizarPisosAVisitar();
+                    EnMarcha = false;
+                    ActualizarSube_Baja();
+                    ProgressBar(0);
                 }
-                EnMarcha = false;
-                ActualizarSube_Baja();
-                ProgressBar(0);
             }
         }
 
         //En esta funcion se aplica toda la logica de seleccionar el piso al subir o bajar, dependiendo del piso donde estas...
         private Peticion SeleccionarPiso()
         {
-            Peticion objetivo = paradas[0]; //de momento escoge el primer piso TODO
+            Peticion objetivo = paradas[0]; //de momento escoge el primer piso
+
+            //Subir un piso------------------------------------------------------
+            /*
+             * El ascensor siempre espera a cerrar la puerta para tomar una decisión
+             * Miramos si no hay solicitudes de parada ni de llamada para el piso actual
+             * Si no existe una solicitud en un piso inferior mientras se esta bajando
+             * Si existe alguna solicitud de parada y/o llamada en el piso superior
+             */
+            if (!SolicitudLlamada(PisoActualD) && !SolicitudParada(PisoActualD))
+            {
+                objetivo = SolicitudPisoInferior(PisoActualD);
+
+                if (objetivo == null || Sube_baja)
+                {
+
+                    objetivo = SolicitudPisoSuperior(PisoActualD);
+                    if (objetivo != null)
+                    {
+                        PisoObjetivo.Text = objetivo.Piso.ToString();
+                        PisoObjetivo.Refresh();
+                        return objetivo;
+                    }
+
+                }
+            }
+
+            //Bajar un piso-------------------------------------------------------
+            /*
+             * El ascensor siempre espera a cerrar la puerta para tomar una decisión
+             * Miramos si no hay solicitudes de parada ni de llamada para el piso actual
+             * Si no existe una solicitud en un piso superior mientras se esta subiendo
+             * Si existe alguna solicitud de parada y/o llamada en el piso inferior
+             */
+            if (!SolicitudLlamada(PisoActualD) && !SolicitudParada(PisoActualD))
+            {
+                objetivo = SolicitudPisoSuperior(PisoActualD);
+
+                if (objetivo == null || !Sube_baja)
+                {
+
+                    objetivo = SolicitudPisoInferior(PisoActualD);
+                    if (objetivo != null)
+                    {
+                        PisoObjetivo.Text = objetivo.Piso.ToString();
+                        PisoObjetivo.Refresh();
+                        return objetivo;
+                    }
+
+                }
+            }
+
+            if (SolicitudLlamada(PisoActualD) && SolicitudParada(PisoActualD))
+            {
+                objetivo = paradas.ToList().Where(x => x.Piso == PisoActualD).FirstOrDefault();
+            }
+
+
+            if (objetivo == null)
+            {
+                objetivo = paradas[0]; //escoge el primer piso si no hay ninguno seleccionado
+            }
+
             PisoObjetivo.Text = objetivo.Piso.ToString();
             PisoObjetivo.Refresh();
             return objetivo;
@@ -176,13 +244,24 @@ namespace El_Ascensor
 
         private void LlegadaAPiso(Peticion actual)
         {
-            paradas.Remove(actual);
+            //Eliminamos todas las paradas que sean iguales o que sean del interior del ascensor con el mismo piso porque ya han llegado a su destino
+            var paradasSimilares = paradas.ToList().Where(x => x.Piso == actual.Piso && (x.Sube_baja == actual.Sube_baja || x.Panel));
+
+            foreach (var item in paradasSimilares)
+            {
+                paradas.Remove(item);
+            }
+
             PisoActualD = actual.Piso;
+            if (!actual.Panel)
+            {
+                Sube_baja = actual.Sube_baja;
+            }
             PisoActual.Text = PisoActualD.ToString();
             PisoActual.Refresh();
             AscensorImagen.BackgroundImage = Properties.Resources.AA;
             AscensorImagen.Refresh();
-            System.Threading.Thread.Sleep(800);
+            System.Threading.Thread.Sleep(2000);
             AscensorImagen.BackgroundImage = Properties.Resources.AC2;
             AscensorImagen.Refresh();
         }
@@ -193,6 +272,42 @@ namespace El_Ascensor
             progressBar.Minimum = 0;
             progressBar.Value = 0;
             progressBar.Step = 1;
+        }
+
+        //Mira si hay solicitudes de paradas para el piso (panel del ascensor)
+        private bool SolicitudParada(int piso)
+        {
+            if (paradas.ToList().Where(x => x.Piso == piso && x.Panel == true).Count() != 0) return true;
+            return false;
+        }
+
+        //Mira si hay solicitudes de llamadas para el piso (desde los botones del piso)
+        private bool SolicitudLlamada(int piso)
+        {
+            if (paradas.ToList().Where(x => x.Piso == piso && x.Panel == false).Count() != 0) return true;
+            return false;
+        }
+
+        //Mira si hay solicitudes para pisos superiores
+        private Peticion SolicitudPisoSuperior(int piso)
+        {
+            List<Peticion> peticiones = paradas.ToList().Where(x => x.Piso > piso && (x.Sube_baja == Sube_baja || x.Panel)).OrderBy(x => x.Piso).ToList();
+            if (peticiones.Count() == 0)
+            {
+                peticiones = paradas.ToList().Where(x => x.Piso < piso).OrderBy(x => x.Piso).ToList();
+            }
+            return peticiones.FirstOrDefault();
+        }
+
+        //Mira si hay solicitudes para el pisos inferiores
+        private Peticion SolicitudPisoInferior(int piso)
+        {
+            List<Peticion> peticiones = paradas.ToList().Where(x => x.Piso < piso && (x.Sube_baja == Sube_baja || x.Panel)).OrderByDescending(x => x.Piso).ToList();
+            if(peticiones.Count() == 0)
+            {
+                peticiones = paradas.ToList().Where(x => x.Piso < piso).OrderByDescending(x => x.Piso).ToList();
+            }
+            return peticiones.FirstOrDefault();
         }
 
         private void Boton1_Click(object sender, EventArgs e)
@@ -224,18 +339,6 @@ namespace El_Ascensor
         private void Boton5_Click(object sender, EventArgs e)
         {
             paradas.Add(new Peticion(5, false, true));
-            ActualizarPisosAVisitar();
-        }
-
-        private void Boton6_Click(object sender, EventArgs e)
-        {
-            paradas.Add(new Peticion(6, false, true));
-            ActualizarPisosAVisitar();
-        }
-
-        private void down6_Click(object sender, EventArgs e)
-        {
-            paradas.Add(new Peticion(6, false, false));
             ActualizarPisosAVisitar();
         }
 
@@ -293,9 +396,29 @@ namespace El_Ascensor
             ActualizarPisosAVisitar();
         }
 
-        private void ElAscensor_Load(object sender, EventArgs e)
+        private void down6_Click_1(object sender, EventArgs e)
         {
+            paradas.Add(new Peticion(6, false, false));
+            ActualizarPisosAVisitar();
+        }
 
+        private void Boton6_Click_1(object sender, EventArgs e)
+        {
+            paradas.Add(new Peticion(6, false, true));
+            ActualizarPisosAVisitar();
+        }
+
+        private void INICIARSIMULACION_Click(object sender, EventArgs e)
+        {
+            Simulacion = !Simulacion;
+            if (Simulacion)
+            {
+                INICIARSIMULACION.Text = "PARAR SIMULACIÓN";
+            }
+            else
+            {
+                INICIARSIMULACION.Text = "INICIAR SIMULACIÓN";
+            }
         }
     }
 }
