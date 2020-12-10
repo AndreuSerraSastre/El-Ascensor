@@ -29,6 +29,8 @@ namespace El_Ascensor
 
         private Hashtable paradasY = new Hashtable(); //Posicion Y de los pisos para saber donde pararse en cada parada, por ejemplo, piso 1 y:596px
         private Thread t; //El ascensor es un hilo independiente, si no lo fuera al pulsar los botones, estos se quedan esperando a que el ascensor acabe
+
+        private bool PT; //Indica si la puerta esta cerrada (true) o abierta (false)
         public ElAscensor()
         {
             InitializeComponent();
@@ -70,7 +72,7 @@ namespace El_Ascensor
                 while (Simulacion)
                 {
                     //Si hay paradas se pone en marcha
-                    while (paradas.Count != 0)
+                    while (HihaPet())
                     {
 
                         EnMarcha = true;
@@ -120,6 +122,11 @@ namespace El_Ascensor
             }
         }
 
+        private bool HihaPet()
+        {
+            return paradas.Count != 0;
+        }
+
         //En esta funcion se aplica toda la logica de seleccionar el piso al subir o bajar, dependiendo del piso donde estas...
         private Peticion SeleccionarPiso()
         {
@@ -132,6 +139,14 @@ namespace El_Ascensor
              * Si no existe una solicitud en un piso inferior mientras se esta bajando
              * Si existe alguna solicitud de parada y/o llamada en el piso superior
              */
+
+            /*
+             * PujBai ˄ PT ˄ ¬Sol_atu_pis_act ˄ Sol_atu_pis_sup → PujarUnPis
+             * PujBai ˄ PT ˄ ¬Sol_cri_pis_act ˄ Sol_cri_pis_sup →  PujarUnPis
+             * ¬PujBai ˄ PT ˄ ¬Sol_atu_pis_act ˄ Sol_atu_pis_sup → PujarUnPis
+             * ¬PujBai ˄ PT ˄ ¬Sol_cri_pis_act ˄ Sol_cri_pis_sup → PujarUnPis
+             */
+
             if (!SolicitudLlamada(PisoActualD) && !SolicitudParada(PisoActualD))
             {
                 objetivo = SolicitudPisoInferior(PisoActualD);
@@ -157,6 +172,14 @@ namespace El_Ascensor
              * Si no existe una solicitud en un piso superior mientras se esta subiendo
              * Si existe alguna solicitud de parada y/o llamada en el piso inferior
              */
+
+            /*
+             * ¬PujBai ˄ PT ˄ ¬Sol_atu_pis_act ˄ Sol_atu_pis_inf → BaixarUnPis
+             * ¬PujBai ˄ PT ˄ ¬Sol_cri_pis_act ˄ Sol_cri_pis_inf →  BaixarUnPis
+             * PujBai ˄ PT ˄ ¬Sol_atu_pis_act ˄ Sol_atu_pis_inf → BaixarUnPis 
+             * PujBai ˄ PT ˄ ¬Sol_cri_pis_act ˄ Sol_cri_pis_inf → BaixarUnPis 
+             */
+
             if (!SolicitudLlamada(PisoActualD) && !SolicitudParada(PisoActualD))
             {
                 objetivo = SolicitudPisoSuperior(PisoActualD);
@@ -175,6 +198,9 @@ namespace El_Ascensor
                 }
             }
 
+            /*
+             * Sol_cri_pis_act ˄ Sol_atu_pis_act → Actualitzar_pis_objectiu 
+             */
             if (SolicitudLlamada(PisoActualD) && SolicitudParada(PisoActualD))
             {
                 objetivo = paradas.ToList().Where(x => x.Piso == PisoActualD).FirstOrDefault();
@@ -183,7 +209,7 @@ namespace El_Ascensor
 
             if (objetivo == null)
             {
-                objetivo = paradas[0]; //escoge el primer piso si no hay ninguno seleccionado
+                objetivo = paradas[0]; //escoge el primer piso si no hay ninguno seleccionado o error
             }
 
             PisoObjetivo.Text = objetivo.Piso.ToString();
@@ -244,14 +270,6 @@ namespace El_Ascensor
 
         private void LlegadaAPiso(Peticion actual)
         {
-            //Eliminamos todas las paradas que sean iguales o que sean del interior del ascensor con el mismo piso porque ya han llegado a su destino
-            var paradasSimilares = paradas.ToList().Where(x => x.Piso == actual.Piso && (x.Sube_baja == actual.Sube_baja || x.Panel));
-
-            foreach (var item in paradasSimilares)
-            {
-                paradas.Remove(item);
-            }
-
             PisoActualD = actual.Piso;
             if (!actual.Panel)
             {
@@ -259,11 +277,54 @@ namespace El_Ascensor
             }
             PisoActual.Text = PisoActualD.ToString();
             PisoActual.Refresh();
-            AscensorImagen.BackgroundImage = Properties.Resources.AA;
-            AscensorImagen.Refresh();
-            System.Threading.Thread.Sleep(2000);
+
+            //Miramos si hay solicitudes en el piso actual
+            var paradasSimilares = paradas.ToList().Where(x => x.Piso == actual.Piso && (x.Sube_baja == actual.Sube_baja || x.Panel));
+
+            /*
+             * PT ˄ Sol_atu_pis_act → ObrirPorta
+             * 
+             * PT ˄ Sol_cri_pis_act → ObrirPorta
+             */
+
+            if (PT && (actual != null || paradasSimilares.Count() != 0))
+            {
+
+                foreach (var item in paradasSimilares)
+                {
+                    paradas.Remove(item);
+                }
+
+                AbrirPuerta();
+
+                /*
+                 * ¬PT ˄ Esp → TancarPorta
+                 * 
+                 * ¬PT → EsperarXSegons
+                 */
+                if (!PT)
+                {
+                    //Esperar un tiempo para que todos puedan entrar
+                    System.Threading.Thread.Sleep(2000);
+
+                    CerrarPuerta();
+                }
+
+            }
+        }
+
+        private void CerrarPuerta()
+        {
             AscensorImagen.BackgroundImage = Properties.Resources.AC2;
             AscensorImagen.Refresh();
+            PT = true;
+        }
+
+        private void AbrirPuerta()
+        {
+            AscensorImagen.BackgroundImage = Properties.Resources.AA;
+            AscensorImagen.Refresh();
+            PT = false;
         }
 
         private void ProgressBar(int piso)
@@ -303,7 +364,7 @@ namespace El_Ascensor
         private Peticion SolicitudPisoInferior(int piso)
         {
             List<Peticion> peticiones = paradas.ToList().Where(x => x.Piso < piso && (x.Sube_baja == Sube_baja || x.Panel)).OrderByDescending(x => x.Piso).ToList();
-            if(peticiones.Count() == 0)
+            if (peticiones.Count() == 0)
             {
                 peticiones = paradas.ToList().Where(x => x.Piso < piso).OrderByDescending(x => x.Piso).ToList();
             }
