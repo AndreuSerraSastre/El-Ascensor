@@ -30,7 +30,7 @@ namespace El_Ascensor
         private Hashtable paradasY = new Hashtable(); //Posicion Y de los pisos para saber donde pararse en cada parada, por ejemplo, piso 1 y:596px
         private Thread t; //El ascensor es un hilo independiente, si no lo fuera al pulsar los botones, estos se quedan esperando a que el ascensor acabe
 
-        private bool PT; //Indica si la puerta esta cerrada (true) o abierta (false)
+        private bool PT = true; //Indica si la puerta esta cerrada (true) o abierta (false)
         public ElAscensor()
         {
             InitializeComponent();
